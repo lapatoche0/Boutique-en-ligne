@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chez Wam - Vente de Sneakers</title>
+    <script>
+        function addToCart(name, price) {
+            // Appel de la fonction C# pour ajouter au panier
+            DotNet.invokeMethodAsync('SneakerShop', 'AddToCart', name, price)
+                .then(result => {
+                    console.log(result);
+                });
+        }
+
+        function checkout() {
+            // Appel de la fonction C# pour finaliser l'achat
+            DotNet.invokeMethodAsync('SneakerShop', 'Checkout')
+                .then(result => {
+                    console.log(result);
+                });
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Chez Wam - Vente de Sneakers</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#">Produits</a></li>
+                <li><a href="#">Panier</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Nouveautés</h2>
+            <!-- Afficher les produits récents ici -->
+            <div>
+                <h3>Nike Air Max</h3>
+                <p>Prix: $150</p>
+                <button onclick="addToCart('Nike Air Max', 150)">Ajouter au panier</button>
+            </div>
+            <div>
+                <h3>Adidas Superstar</h3>
+                <p>Prix: $100</p>
+                <button onclick="addToCart('Adidas Superstar', 100)">Ajouter au panier</button>
+            </div>
+        </section>
+
+        <section>
+            <h2>Produits populaires</h2>
+            <!-- Afficher les produits populaires ici -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2022 Chez Wam - Tous droits réservés</p>
+    </footer>
+
+    <script src="_framework/blazor.webassembly.js"></script>
+    <script src="SneakerShop.js"></script>
+</body>
+</html>
